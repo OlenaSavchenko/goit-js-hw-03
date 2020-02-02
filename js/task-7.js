@@ -18,7 +18,7 @@ const account = {
     return {
       amount: amount,
       type: type,
-      id: generateId(),
+      id: this.generateId(),
     };
   },
 
@@ -43,17 +43,23 @@ const account = {
   },
 
   getTransactionDetails(id) {
+    let getTransaction;
+
     for (const transaction of this.transactions) {
-      if (id === transaction.id) return transaction;
+      if (id === transaction.id) {
+        getTransaction = transaction;
+      }
     }
-    return `Транзакция под номером ${id} не производилась`;
+    return getTransaction;
   },
 
   getTransactionTotal(type) {
     let total = 0;
     for (const transaction of this.transactions) {
-      if (type === transaction.type);
+      if (type === transaction.type) {
+        total += transaction.amount;
+      }
     }
-    return (total += transaction.amount);
+    return total;
   },
 };
