@@ -6,6 +6,7 @@ const Transaction = {
 const account = {
   balance: 0,
   transactions: [],
+
   generateId() {
     return (
       '_' +
@@ -14,12 +15,10 @@ const account = {
         .substr(2, 9)
     );
   },
+
   createTransaction(amount, type) {
-    return {
-      amount: amount,
-      type: type,
-      id: this.generateId(),
-    };
+    const id = this.generateId();
+    return { amount, type, id };
   },
 
   deposit(amount) {
